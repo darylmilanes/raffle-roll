@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Game Show · darylmilanes.com</title>
+
+  <!-- Brand font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Responsive stage -->
+  <div class="frame">
+    <div class="container" id="container">
+      <!-- NAMES PAGE -->
+      <div class="page" id="namesPage">
+        <h1>The lucky winner is...</h1>
+        <div class="controls">
+          <button id="rollBtn" class="btn">Roll</button>
+        </div>
+        <div class="board" id="namesBoard"></div>
+      </div>
+      <!-- AMOUNTS PAGE -->
+      <div class="page" id="amountsPage">
+        <h1>You Won...</h1>
+        <div class="board" id="amountsBoard"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Setup Wizard (shown on load) -->
+  <div class="overlay active" id="setup">
+    <div class="panel wide">
+      <div class="wizard">
+        <!-- Step 1: Names -->
+        <section class="step" id="stepNames" aria-labelledby="step1Title">
+          <h2 id="step1Title">Welcome</h2>
+          <p>Enter participant names, one per line.</p>
+          <textarea id="namesInput" rows="10" placeholder="Example:
+Alice
+Bob
+Charlie"></textarea>
+
+          <div class="step-actions">
+            <button id="nextToPrizes" class="btn">Next</button>
+          </div>
+        </section>
+
+        <!-- Step 2: Prizes -->
+        <section class="step hidden" id="stepPrizes" aria-labelledby="step2Title">
+          <h2 id="step2Title">Prizes &amp; Rules</h2>
+          <p id="prizeHint" class="muted">After names are set, you’ll see round guidance here.</p>
+
+          <div class="prize-list" id="prizeList">
+            <!-- Prize rows injected here -->
+          </div>
+
+          <div class="row-actions">
+            <button id="addPrizeRow" class="btn outline">Add prize</button>
+            <button id="clearPrizes" class="btn ghost">Clear all</button>
+          </div>
+
+          <div class="step-actions">
+            <button id="backToNames" class="btn ghost">Back</button>
+            <button id="proceedSetup" class="btn">Proceed</button>
+          </div>
+
+          <p class="tiny muted">
+            Rules: Total prizes must equal number of names.
+            Exactly <strong>1</strong> Final prize (Round N). At most <strong>1</strong> Penultimate prize (Round N-1).
+            The rest are “Any” (Rounds 1…N-2).
+          </p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Round Popup -->
+  <div class="overlay" id="popup">
+    <div class="panel" id="popupContent">
+      <p id="popupText"></p>
+      <button class="btn" id="popupBtn">Keep rolling</button>
+    </div>
+  </div>
+
+  <!-- Winner banner -->
+  <div class="overlay" id="winner">
+    <div class="banner" id="winnerBox"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
