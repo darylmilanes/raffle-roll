@@ -47,16 +47,6 @@ let poolAny = [];              // rounds 1..(N-6) plus any fallback
 let poolLate = { 1: null, 2: null, 3: null, 4: null, 5: null }; // exact rounds N-k
 let prizeFinal = null;         // round N (exactly 1)
 
-/* ==========
-   Setup Wizard
-   ========== */
-if (!namesInput.value.trim()){
-  namesInput.value = [
-    "Cyrene","Teody","RR","Poypoy","Kaye",
-    "Camille","Unkai","Ding","Kid","Korr"
-  ].join("\n");
-}
-
 function makePrizeRow(amount = "", when = "any"){
   const row = document.createElement('div');
   row.className = 'prize-row';
